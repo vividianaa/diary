@@ -10,7 +10,7 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 MONGODB_URI = os.environ.get("MONGODB_URI")
-DB_NAME =  os.environ.get("DB_NAME")
+DB_NAME =  os.environ.get("DB_NAME" )
 
 client = MongoClient(MONGODB_URI)
 db = client[DB_NAME]
@@ -44,12 +44,15 @@ def save_diary():
     profilename = f'static/profile-{mytime}.{extension}'
     profile.save(profilename)
 
+    time = today.strftime('%Y.%m.%d')
+
 
     doc = {
         'file': filename,
         'profile': profilename,
         'title' : title_receive,
-        'content' : content_receive
+        'content' : content_receive,
+        'time' : time,
     }
     db.diary.insert_one(doc)
     return jsonify({'msg': 'data was saved!'})

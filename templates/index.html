@@ -7,11 +7,11 @@
     <meta property="og:title" content="Personal Diary" />
     <meta
       property="og:description"
-      content="Summary of the contents of the page you are viewing"
+      content="Sebuah diary dari sparta"
     />
     <meta
       property="og:image"
-      content="{{ url_for('static', filename='ogimage.png') }}"
+      content="https://cdn.glitch.global/19cfc5ea-c0c2-4df3-b3f5-2831d2edd12c/diary.jpg?v=1682435356990"
     />
 
     <!-- Bootstrap CSS -->
@@ -43,6 +43,7 @@
               let title = articles[i]["title"];
               let content = articles[i]["content"];
               let file = articles[i]["file"];
+              let time = articles[i]["time"] || '????.??.??';
               let profile = articles[i]["profile"];
               let temp_html = `
               <div class="col-4">
@@ -52,7 +53,7 @@
                     <img src="../${profile}" class="card-img-top" alt="..."/ style="border-radius:100%; width:80px; height:80px;">
                     <h5 class="card-title">${title}</h5>
                     <p class="card-text">${content}</p>
-                    <h6 class="card-subtitle mb-2 text-muted">2022.02.15</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">${time}</h6>
                   </div>
               </div>
             </div>
